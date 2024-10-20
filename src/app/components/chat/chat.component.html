@@ -8,7 +8,8 @@
   <!-- Contenedor de los mensajes -->
   <div class="chat-messages">
     <div *ngFor="let data of messages"[ngClass]="{'message-receive': data.type === 'received', 'message-send': data.type === 'sent'}">
-      {{ data.text }}
+      <strong>{{ data.user }}:</strong> {{ data.text }} 
+      <span *ngIf="data.date"> ({{ data.date | date:'short' }})</span>
     </div>
   </div>
 

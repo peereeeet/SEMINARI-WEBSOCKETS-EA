@@ -10,12 +10,12 @@ export class ChatService {
 
   constructor(private socket: Socket) { }
 
-  sendMessage(msg: string) {
-    this.socket.emit('message', msg);
+  sendMessage(data: { user: string, message: string }) {
+    this.socket.emit('message', data);
   }
 
   getMessage() {
-    return this.socket.fromEvent<string>('message-receive');
+    return this.socket.fromEvent<any>('message-receive');
     
   }
 }
